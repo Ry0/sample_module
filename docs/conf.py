@@ -72,4 +72,4 @@ todo_include_todos = True
 
 # ファイル末尾に以下の行を追記する
 latex_docclass = {'manual': 'jsbook'}
-latex_engine = 'uplatex'
+latex_engine = 'platex'
