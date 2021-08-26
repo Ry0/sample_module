@@ -36,7 +36,7 @@ jobs:
       - name: build pdf
         uses: docker://sphinxdoc/sphinx-latexpdf
         with:
-          args: pip install . && sphinx-build -M latexpdf ./docs ./docs/_build
+          args:  -c "pip install . && sphinx-build -M latexpdf ./docs ./docs/_build"
         env:
           LANG: C.UTF-8
           SPHINXOPTS: -t pdf
