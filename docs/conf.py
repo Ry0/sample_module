@@ -70,41 +70,8 @@ html_theme = 'sphinx_rtd_theme'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-latex_documents = [
-    ('indexpdf', 'index.rst', project, author, 'manual', True),
-]
-latex_elements = {
-    'papersize': 'a4paper',
-    'figure_align': 'H',
-    'preamble': r'''
-       \geometry{top=1.5cm, bottom=1cm, left=1cm, right=1cm, includefoot}
-       \usepackage{titlesec}
-       \titleclass{\chapter}{top}
-       \titleformat{\chapter}
-         [display]  % shape
-         {\centering\normalfont\huge\bfseries} % format
-         {\titlerule[5pt]\vspace{3pt}\titlerule[2pt]\vspace{1em}} % laberl
-         {0pt} % sep
-         {\vspace{3pt}\Huge} % before-code
-         % code
-         [{\vspace{1em}\titlerule[2pt]\vspace{3pt}\titlerule[5pt]}] % after-code
+# languageの部分を'ja'に変更する
+language = 'ja'
 
-       \titleformat{\section}[block]
-         {\normalfont\huge\bfseries} % format
-         {\thesection.} % label
-         {0.5em} % sep
-         {\vspace{3pt}\huge} % before-code
-         [{\vspace{2pt}\titlerule[2pt]}] % after-code
-
-       \setcounter{secnumdepth}{2}
-       \setcounter{tocdepth}{2}
-
-       \usepackage{hyperref}
-       \usepackage{pxjahyper}
-
-       \hypersetup{bookmarksnumbered}
-     '''
-}
-latex_show_urls = 'footnote'
-latex_use_xindy = True
-latex_show_pagerefs = True
+# ファイル末尾に以下の行を追記する
+latex_docclass = {'manual': 'jsbook'}
