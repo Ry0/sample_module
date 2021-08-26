@@ -29,6 +29,7 @@ jobs:
           prerelease: true
   build:
     name: build api document
+    needs: create_release # we need to know the upload URL
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
