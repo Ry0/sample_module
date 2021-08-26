@@ -1,0 +1,49 @@
+name: Upload Python Package
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  create_release:
+    name: Create release page
+    runs-on: ubuntu-latest
+
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: タイトル
+          body: |
+            ### 変更内容
+            -
+          draft: true
+          prerelease: true
+  build:
+    name: build api document
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+ 
+      - name: build pdf
+        uses: docker://sphinxdoc/sphinx-latexpdf
+        with:
+          args: sphinx-build -M latexpdf ./docs ./docs/_build
+        env:
+          LANG: C.UTF-8
+          SPHINXOPTS: -t pdf
+
+      - name: Archive PDF artifacts
+        uses: csexton/release-asset-action@v2
+        with:
+          pattern: "./docs/_build/latex/epp3ja.pdf"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          release-url: ${{ needs.create_release.outputs.upload_url }}
