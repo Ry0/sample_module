@@ -71,10 +71,10 @@ html_theme = 'sphinx_rtd_theme'
 todo_include_todos = True
 
 latex_documents = [
-    ('indexpdf', 'epp3ja.tex', project, author, 'manual', True),
+    ('indexpdf', 'index.rst', project, author, 'manual', True),
 ]
 latex_elements = {
-    'papersize': 'b5paper',
+    'papersize': 'a4paper',
     'figure_align': 'H',
     'preamble': r'''
        \geometry{top=1.5cm, bottom=1cm, left=1cm, right=1cm, includefoot}
