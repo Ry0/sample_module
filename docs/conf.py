@@ -70,8 +70,6 @@ html_theme = 'sphinx_rtd_theme'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-# languageの部分を'ja'に変更する
-language = 'ja'
-
 # ファイル末尾に以下の行を追記する
 latex_docclass = {'manual': 'jsbook'}
+latex_engine = 'uplatex'
