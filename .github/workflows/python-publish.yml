@@ -45,6 +45,6 @@ jobs:
       - name: Archive PDF artifacts
         uses: csexton/release-asset-action@v2
         with:
-          pattern: "./docs/_build/latex/epp3ja.pdf"
+          pattern: "./docs/_build/latex/*.pdf"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           release-url: ${{ needs.create_release.outputs.upload_url }}
