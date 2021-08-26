@@ -37,7 +37,7 @@ jobs:
         uses: docker://sphinxdoc/sphinx-latexpdf
         with:
           args:
-            /bin/bash -c "pip install . && cd ./docs/ && make latexpdf && ls -lt ./_build/latex && cd .."
+            /bin/bash -c "pip install . && cd ./docs/ && make latexpdf && ls -lt ./_build/latex/*.pdf && cd .."
         env:
           LANG: C.UTF-8
           SPHINXOPTS: -t pdf
@@ -45,6 +45,6 @@ jobs:
       - name: Archive PDF artifacts
         uses: csexton/release-asset-action@v2
         with:
-          pattern: "./docs/_build/latex/*.pdf"
+          pattern: "./docs/_build/latex/sample_module.pdf"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           release-url: ${{ needs.create_release.outputs.upload_url }}
